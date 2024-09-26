@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        /* Centrer le titre */
+        h1 {
+            text-align: center;
+        }
+
+        /* Conteneur des cartes pour un alignement horizontal */
+        .comment-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Styles pour chaque carte */
+        .comment-card {
+            width: 300px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        /* Image de l'avatar */
+        .comment-avatar img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        /* En-tête de la carte */
+        .comment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        /* Styles pour l'auteur */
+        .comment-author {
+            margin-left: 15px;
+        }
+
+        .comment-author h4 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .comment-author p {
+            margin: 0;
+            font-size: 12px;
+            color: gray;
+        }
+
+        /* Texte de contenu de la carte */
+        .comment-content p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Feedback</h1>
+    <div class="comment-section">
+        <!-- Première carte -->
+        <div class="comment-card" id="card-1">
+            <div class="comment-header">
+                <div class="comment-avatar">
+                    <img src="Images/caleb.jpg" alt="User Avatar">
+                </div>
+                <div class="comment-author">
+                    <h4>Caleb Okamba</h4>
+                    <p>@caleb_okms</p>
+                </div>
+            </div>
+            <div class="comment-content">
+                <p>Merci Mets d'or by Tondrie pour avoir sublimé le 25e anniversaire de mariage de mes parents. Nous sommes très satisfaits.</p>
+            </div>
+        </div>
+
+        <!-- Deuxième carte -->
+        <div class="comment-card" id="card-2">
+            <div class="comment-header">
+                <div class="comment-avatar">
+                    <img src="Images/users.jpg" alt="User Avatar">
+                </div>
+                <div class="comment-author">
+                    <h4>Inconnu</h4>
+                    <p>@Inconnu</p>
+                </div>
+            </div>
+            <div class="comment-content">
+                <p>Merciii Tondrie c'était très beau et un vrai délice surtout.</p>
+            </div>
+        </div>
+
+        <!-- Troisième carte -->
+        <div class="comment-card" id="card-3">
+            <div class="comment-header">
+                <div class="comment-avatar">
+                    <img src="Images/users.jpg" alt="User Avatar">
+                </div>
+                <div class="comment-author">
+                    <h4>Elena Bi Kouadio</h4>
+                    <p>@Elena</p>
+                </div>
+            </div>
+            <div class="comment-content">
+                <p>Bonsoir Tondrie, j'espère que tu vas bien. Merci pour le gâteau d'Eva. Il était joli et bon, nous étions très satisfaits. Que le Seigneur te bénisse.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const commentCards = document.querySelectorAll('.comment-card');
+
+            // Récupérer le contenu de chaque carte (image, auteur, commentaire)
+            const commentsData = Array.from(commentCards).map(card => ({
+                avatar: card.querySelector('.comment-avatar img').src,
+                author: card.querySelector('.comment-author h4').innerText,
+                username: card.querySelector('.comment-author p').innerText,
+                comment: card.querySelector('.comment-content p').innerText
+            }));
+
+            let index = 0;
+
+            function rotateComments() {
+                // Déplacer le contenu de chaque carte au suivant
+                commentCards.forEach((card, i) => {
+                    const nextIndex = (i + index) % commentCards.length;
+                    const nextComment = commentsData[nextIndex];
+
+                    // Mettre à jour l'image, le nom, le pseudo et le commentaire
+                    card.querySelector('.comment-avatar img').src = nextComment.avatar;
+                    card.querySelector('.comment-author h4').innerText = nextComment.author;
+                    card.querySelector('.comment-author p').innerText = nextComment.username;
+                    card.querySelector('.comment-content p').innerText = nextComment.comment;
+                });
+
+                index = (index + 1) % commentCards.length;
+            }
+
+            // Changer les commentaires toutes les 6 secondes
+            setInterval(rotateComments, 6000);
+        });
+    </script>
+
+</body>
+</html>

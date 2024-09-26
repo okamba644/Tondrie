@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mets d'or by Tondrie</title>
+    <style>
+        body {
+            background-color: black;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #pdf-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #pdf-container object {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="pdf-container">
+        <object data="./fichier/Red Yellow Modern Food Trifolds Brochure .pdf" type="application/pdf">
+            <a href="./fichier/Red Yellow Modern Food Trifolds Brochure .pdf" download="menu.pdf">Télécharger le menu</a>
+        </object>
+    </div>
+</body>
+</html>
